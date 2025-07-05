@@ -1,14 +1,14 @@
 {
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/projects.html", "destination": "/projects", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/home",      "destination": "/index.html" },
     { "source": "/profile",   "destination": "/index.html" },
     { "source": "/services",  "destination": "/index.html" },
     { "source": "/contactus", "destination": "/index.html" },
-
+    { "source": "/contactus", "destination": "/projects.html" },
     { "source": "/projects",  "destination": "/projects.html" }
-  ],
-
-  "redirects": [
-    { "source": "/projects.html", "destination": "/projects", "permanent": true }
   ]
 }
