@@ -1192,4 +1192,41 @@ function currentMobileSlide(n) {
   slides[currentMobileSlideIndex].classList.add('active');
   dots[currentMobileSlideIndex].classList.add('active');
 }
+
+</script>
+<script>
+/* Map clean paths ➜ section IDs */
+const sectionMap = {
+  '/profile'   : 'index.html#intro',
+  '/services'  : 'index.html#services',
+  '/contactus' : 'index.html#footer'
+};
+
+/* Scroll to the right section on first load or after history.change */
+function scrollToSection() {
+  const id = sectionMap[location.pathname.toLowerCase()];
+  if (id) {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+/* Run after HTML is parsed */
+document.addEventListener('DOMContentLoaded', scrollToSection);
+
+/* Intercept clicks on nav links so they stay SPA‑like */
+document.querySelectorAll('a[data-clean-nav]').forEach(a => {
+  a.addEventListener('click', e => {
+    /* Only handle same‑origin links like /services */
+    const href = a.getAttribute('href');
+    if (href?.startsWith('/')) {
+      e.preventDefault();              // stop full page load
+      history.pushState({}, '', href); // update address bar
+      scrollToSection();               // scroll to the section
+    }
+  });
+});
+
+/* Handle back/forward browser buttons */
+window.addEventListener('popstate', scrollToSection);
 </script>
