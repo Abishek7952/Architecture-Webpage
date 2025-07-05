@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    { "source": "/Home", "destination": "/index.html" },
+
+    { "source": "/Profile", "destination": "/#intro" },
+    { "source": "/Profile", "destination": "/index.html#intro" },
+
+    { "source": "/Projects", "destination": "/projects.html" },
+
+    { "source": "/Services", "destination": "/#services" },
+    { "source": "/Services", "destination": "/index.html#services" },
+    
+    { "source": "/ContactUs", "destination": "/#project-contact" },
+    { "source": "/ContactUs", "destination": "/#footer" }
+  ]
+}
