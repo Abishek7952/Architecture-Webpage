@@ -4914,7 +4914,8 @@ input, select, textarea {
 			}
 
 				#logo h1 a {
-					font-size: 1em;
+					        font-size: 0.8em;
+        line-height: normal;
 				}
 
 		/* Intro */
