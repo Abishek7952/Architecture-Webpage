@@ -1,0 +1,61 @@
+/* Default placeholder text - white */
+input::placeholder,
+textarea::placeholder {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #ffffff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #ffffff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* Focused/clicked placeholder text - black */
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: #000000 !important;
+  opacity: 1 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  color: #000000 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder {
+  color: #000000 !important;
+  opacity: 1 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+input:focus:-ms-input-placeholder,
+textarea:focus:-ms-input-placeholder {
+  color: #000000 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+}

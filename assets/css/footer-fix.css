@@ -1,0 +1,31 @@
+/* Footer Visibility Fix */
+#footer-projects {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 10 !important;
+}
+
+.contact-wrapper {
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.footer-info,
+.contact-form,
+.contact-info {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.footer-info h3,
+.footer-info p,
+.contact-form h2,
+.contact-form p,
+.contact-info h2 {
+  color: #ffffff !important;
+  display: block !important;
+  visibility: visible !important;
+}
