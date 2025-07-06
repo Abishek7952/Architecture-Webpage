@@ -3654,7 +3654,11 @@ input, select, textarea {
   position: relative;
   color: #ffffff;
   background-color: #FF860C;
-			background-image:url("/images/introbg34.jpeg");
+			background-image:image-set(
+    url("/images/introbg34.jpeg") 1x,
+    url("Deployment/images/introbg342x.jpg") 2x,
+   
+  );
             background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
