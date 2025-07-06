@@ -6033,9 +6033,7 @@ input, select, textarea {
 		display: block;
 	}
 	#intro {
-  
-  
-			background-image:url("/Deployment/images/introbg34-mobile.jpg");
+			background-image:url("/images/introbg34-mobile.jpg");
             background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
