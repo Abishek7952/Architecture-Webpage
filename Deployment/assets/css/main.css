@@ -6033,11 +6033,9 @@ input, select, textarea {
 		display: block;
 	}
 	#intro {
-			 background-image: image-set(
-    url("/images/introbg34.jpeg") 1x,
-    url("/images/introbg34@2x.jpg") 2x,
-	 url("/images/introbg34@3x.jpg") 3x
-  );
+  
+  
+			/* background-image:url("/images/introbg34-mobile.jpg"); */
             background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
