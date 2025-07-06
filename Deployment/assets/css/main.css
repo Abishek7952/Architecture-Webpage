@@ -3655,6 +3655,9 @@ input, select, textarea {
   color: #ffffff;
   background-color: #FF860C;
 			background-image:url("/images/introbg34.jpeg");
+            background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
 }
 
 #intro .container {
