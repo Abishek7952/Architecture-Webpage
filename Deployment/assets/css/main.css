@@ -3655,8 +3655,8 @@ input, select, textarea {
   color: #ffffff;
   background-color: #FF860C;
 			background-image:image-set(
-    url("/images/introbg34.jpeg") 1x,
-    url("Deployment/images/introbg342x.jpg") 2x,
+    url("../../images/introbg34.jpeg") 1x,
+    url("../../images/introbg34@2x.jpg") 2x,
    
   );
             background-size: cover;
