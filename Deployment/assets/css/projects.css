@@ -238,24 +238,32 @@ font-size:x-large;
   padding: 2em 0 0em 0;
   position: relative;
   color: #ffffff;
+  background-image: url('../../images/introbg5.jpg');
+  background-repeat: repeat;
+  background-position: center;
+  background-size: auto;
+}
+
+/* Mobile Background Fix */
+@media (max-width: 768px) {
+  #projects-gallery {
+    background-image: none;
+    background-color: white;
+    color: #333;
+  }
+  
+  .wrapper.style1 {
+    background-image: none;
+    background-color: white;
+  }
 }
 
 .bg-repeat-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 2000px;
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
+  display: none;
 }
 
 .projects-gallery-bg-image {
-  width: 100%;
-  height: auto;
-  display: block;
+  display: none;
 }
 
 #projects-gallery .container {
@@ -396,7 +404,7 @@ font-size:x-large;
 
 .category-tabs button {
 	padding: 12px 24px;
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.2);
 	color: #ffffff;
 	border: 2px solid rgba(255, 136, 0, 0.3);
 	border-radius: 25px;
@@ -690,7 +698,7 @@ font-size:x-large;
   
   .gallery-container .gallery {
     grid-template-columns: 1fr;
-    gap:5px;
+    gap:20px;
   }
   .gallery-container .gallery img {
 	

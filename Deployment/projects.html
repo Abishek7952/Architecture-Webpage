@@ -82,9 +82,6 @@
 		
           <!-- Projects Content -->
           <section id="projects-gallery" class="wrapper style1">
-            <div class="bg-repeat-container" id="bg-repeat-container">
-              <img src="images/introbg5.jpg" alt="Projects Gallery Background" class="projects-gallery-bg-image" id="bg-template" />
-            </div>
             <div class="container">
             <!-- Gallery Title -->
             <div class="gallery-title">
@@ -415,40 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-// Clone background image to create repeating effect until end of section
-let updateBackground;
 
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.getElementById('bg-repeat-container');
-  const template = document.getElementById('bg-template');
-  const section = document.getElementById('projects-gallery');
-  
-  updateBackground = function() {
-    const sectionHeight = section.offsetHeight;
-    const imageHeight = template.offsetHeight;
-    const neededImages = Math.ceil(sectionHeight / imageHeight);
-    
-    // Clear existing clones
-    const clones = container.querySelectorAll('img:not(#bg-template)');
-    clones.forEach(clone => clone.remove());
-    
-    // Add clones to fill section
-    for (let i = 0; i < neededImages; i++) {
-      const clone = template.cloneNode(true);
-      clone.removeAttribute('id');
-      container.appendChild(clone);
-    }
-    
-    // Set container height to match section
-    container.style.height = sectionHeight + 'px';
-    container.style.overflow = 'hidden';
-  };
-  
-  // Update on load and resize
-  template.onload = updateBackground;
-  window.addEventListener('resize', updateBackground);
-  setTimeout(updateBackground, 100);
-});
 
 const subcategories = {
   residential: ['Luxury Villas', 'Group Housing'],
