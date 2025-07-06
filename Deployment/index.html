@@ -94,16 +94,16 @@
 									<a href="/home"><i class="fas fa-home"></i> Home</a>
 								</li>
 								<li>
-									<a href="/profile"><i class="fas fa-user"></i> Profile</a>
+									<a href="#intro"><i class="fas fa-user"></i> Profile</a>
 								</li>
 								<li>
 									<a href="/projects"><i class="fas fa-briefcase"></i> Projects</a>
 								</li>
 								<li>
-									<a href="/services"><i class="fas fa-cogs"></i> Services</a>
+									<a href="#services"><i class="fas fa-cogs"></i> Services</a>
 								</li>
 								<li>
-									<a href="/contactus"><i class="fas fa-envelope"></i> Contact</a>
+									<a href="#footer"><i class="fas fa-envelope"></i> Contact</a>
 								</li>
 							</ul>
 
@@ -1193,47 +1193,4 @@ function currentMobileSlide(n) {
   dots[currentMobileSlideIndex].classList.add('active');
 }
 
-</script>
-<script>
-(() => {
-  /*  clean path  →  section id (no #)  */
-  const sectionMap = {
-    '/profile'   : 'intro',
-    '/services'  : 'services',
-    '/contactus' : 'footer'
-  };
-
-  /* helper: normalise /profile/ → /profile */
-  const norm = p => (p.endsWith('/') && p.length > 1) ? p.slice(0, -1) : p;
-
-  /* smooth‑scroll to the section for a given path */
-  function scroll(path = location.pathname) {
-    const id = sectionMap[norm(path.toLowerCase())];
-    if (!id) return;                                  // no match → do nothing
-    requestAnimationFrame(() =>
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    );
-  }
-
-  /* 1️⃣ first page load */
-  document.addEventListener('DOMContentLoaded', scroll);
-
-  /* 2️⃣ intercept nav clicks EARLY (capture phase) */
-  document.addEventListener('click', e => {
-    const link = e.target.closest('a[data-clean-nav]');
-    if (!link) return;
-
-    const href = link.getAttribute('href');
-    if (!href || !href.startsWith('/')) return;       // only same‑origin links
-
-    e.preventDefault();                               // stop full reload
-    if (norm(location.pathname) !== norm(href)) {
-      history.pushState({}, '', href);                // update address bar
-    }
-    scroll(href);                                     // smooth scroll
-  }, true);                                           //  ← capture = true
-
-  /* 3️⃣ handle back / forward buttons */
-  window.addEventListener('popstate', () => scroll());
-})();
 </script>
