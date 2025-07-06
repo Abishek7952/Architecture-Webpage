@@ -12,26 +12,27 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<script type="application/ld+json">
-			{
-			"@context": "https://schema.org",
-			"@type": "Architect",
-			"name": "Kalai Vrikshya Architects",
-			"url": "https://yourdomain.com",
-			"address": {
-				"@type": "PostalAddress",
-				"streetAddress": "AA-151, First Floor, 3rd Avenue, Anna Nagar Roundtana, Chennai 600040, Tamil Nadu",
-				"addressLocality": "Chennai",
-				"addressRegion": "TN",
-				"postalCode": "600040",
-				"addressCountry": "IN"
-			},
-			"sameAs": [
-				"https://www.instagram.com/kalai_vrikshya_architects?igsh=MWo2anNtcDI5NDZycA%3D%3D&utm_source=qr",
-				"https://www.linkedin.com/company/yourfirm"
-			]
-			}
-			</script>
-	<link rel="stylesheet" href="assets/css/main.css" />
+{
+  "@context": "https://schema.org",
+  "@type": "Architect",
+  "name": "Kalai Vrikshya Architects",
+  "url": "https://yourdomain.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "AA-151, First Floor, 3rd Avenue, Anna Nagar Roundtana, Chennai 600040, Tamil Nadu",
+    "addressLocality": "Chennai",
+    "addressRegion": "TN",
+    "postalCode": "600040",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://www.instagram.com/kalai_vrikshya_architects?igsh=MWo2anNtcDI5NDZycA%3D%3D&utm_source=qr",
+    "https://www.linkedin.com/company/yourfirm"
+  ]
+}
+</script>
+
+		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/placeholder-fix.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
@@ -55,10 +56,10 @@
 
 
 
-			<!-- fonts -->
-			<link rel="preconnect" href="https://fonts.googleapis.com">
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-			<link href="https://fonts.googleapis.com/css2?family=Carattere&family=DM+Serif+Text:ital@0;1&family=Protest+Guerrilla&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+<!-- fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Carattere&family=DM+Serif+Text:ital@0;1&family=Protest+Guerrilla&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
 	</head>
 
 
@@ -1194,39 +1195,41 @@ function currentMobileSlide(n) {
 
 </script>
 <script>
-/* Map clean paths ➜ section IDs */
+/* path -> section id (no #) */
 const sectionMap = {
-  '/profile'   : '#intro',
-  '/services'  : '#services',
-  '/contactus' : '#footer'
+  '/profile'   : 'intro',
+  '/services'  : 'services',
+  '/contactus' : 'footer'
 };
 
-/* Scroll to the right section on first load or after history.change */
-function scrollToSection() {
-  const id = sectionMap[location.pathname.toLowerCase()];
-  if (id) {
-    const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }
+/* scroll helper */
+function scrollToSection(path = location.pathname) {
+  path = path.toLowerCase().replace(/\/$/, '');        // strip trailing /
+  const id = sectionMap[path];
+  if (!id) return;
+  requestAnimationFrame(() => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  });
 }
 
-/* Run after HTML is parsed */
-document.addEventListener('DOMContentLoaded', scrollToSection);
-
-/* Intercept clicks on nav links so they stay SPA‑like */
-document.querySelectorAll('a[data-clean-nav]').forEach(a => {
-  a.addEventListener('click', e => {
-    /* Only handle same‑origin links like /services */
-    const href = a.getAttribute('href');
-    if (href?.startsWith('/')) {
-      e.preventDefault();              // stop full page load
-      history.pushState({}, '', href); // update address bar
-      scrollToSection();               // scroll to the section
-    }
-  });
+/* 1. first load */
+document.addEventListener('DOMContentLoaded', () => {
+  scrollToSection();
 });
 
-/* Handle back/forward browser buttons */
-window.addEventListener('popstate', scrollToSection);
-</script>nction currentSlide(e){const l=document.querySelectorAll(".company-slide"),d=document.querySelectorAll(".dot");l[currentSlideIndex].classList.remove("active"),d[currentSlideIndex].classList.remove("active"),currentSlideIndex=e-1,l[currentSlideIndex].classList.add("active"),d[currentSlideIndex].classList.add("active")}let currentMobileSlideIndex=0;const totalMobileSlides=4;function changeMobileSlide(e){const l=document.querySelectorAll(".company-slide-mobile"),d=document.querySelectorAll(".slider-dots-mobile .dot");l[currentMobileSlideIndex].classList.remove("active"),d[currentMobileSlideIndex].classList.remove("active"),currentMobileSlideIndex+=e,currentMobileSlideIndex>=4?currentMobileSlideIndex=0:currentMobileSlideIndex<0&&(currentMobileSlideIndex=3),l[currentMobileSlideIndex].classList.add("active"),d[currentMobileSlideIndex].classList.add("active")}function currentMobileSlide(e){const l=document.querySelectorAll(".company-slide-mobile"),d=document.querySelectorAll(".slider-dots-mobile .dot");l[currentMobileSlideIndex].classList.remove("active"),d[currentMobileSlideIndex].classList.remove("active"),currentMobileSlideIndex=e-1,l[currentMobileSlideIndex].classList.add("active"),d[currentMobileSlideIndex].classList.add("active")}</script>
->>>>>>> 5b8d0933610c6c86a5d7bdcbf22ef1cfecc4c36e
+/* 2. intercept internal nav clicks */
+document.body.addEventListener('click', e => {
+  const link = e.target.closest('a[data-clean-nav]');
+  if (!link) return;
+
+  const href = link.getAttribute('href');
+  if (href && href.startsWith('/')) {
+    e.preventDefault();                     // stop full page reload
+    history.pushState({}, '', href);        // update address bar
+    scrollToSection(href);                  // smooth scroll
+  }
+});
+
+/* 3. browser back/forward buttons */
+window.addEventListener('popstate', () => scrollToSection());
+</script>

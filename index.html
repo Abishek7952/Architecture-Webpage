@@ -1195,38 +1195,41 @@ function currentMobileSlide(n) {
 
 </script>
 <script>
-/* Map clean paths ➜ section IDs */
+/* path -> section id (no #) */
 const sectionMap = {
-  '/profile'   : '#intro',
-  '/services'  : '#services',
-  '/contactus' : '#footer'
+  '/profile'   : 'intro',
+  '/services'  : 'services',
+  '/contactus' : 'footer'
 };
 
-/* Scroll to the right section on first load or after history.change */
-function scrollToSection() {
-  const id = sectionMap[location.pathname.toLowerCase()];
-  if (id) {
-    const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }
+/* scroll helper */
+function scrollToSection(path = location.pathname) {
+  path = path.toLowerCase().replace(/\/$/, '');        // strip trailing /
+  const id = sectionMap[path];
+  if (!id) return;
+  requestAnimationFrame(() => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  });
 }
 
-/* Run after HTML is parsed */
-document.addEventListener('DOMContentLoaded', scrollToSection);
-
-/* Intercept clicks on nav links so they stay SPA‑like */
-document.querySelectorAll('a[data-clean-nav]').forEach(a => {
-  a.addEventListener('click', e => {
-    /* Only handle same‑origin links like /services */
-    const href = a.getAttribute('href');
-    if (href?.startsWith('/')) {
-      e.preventDefault();              // stop full page load
-      history.pushState({}, '', href); // update address bar
-      scrollToSection();               // scroll to the section
-    }
-  });
+/* 1. first load */
+document.addEventListener('DOMContentLoaded', () => {
+  scrollToSection();
 });
 
-/* Handle back/forward browser buttons */
-window.addEventListener('popstate', scrollToSection);
+/* 2. intercept internal nav clicks */
+document.body.addEventListener('click', e => {
+  const link = e.target.closest('a[data-clean-nav]');
+  if (!link) return;
+
+  const href = link.getAttribute('href');
+  if (href && href.startsWith('/')) {
+    e.preventDefault();                     // stop full page reload
+    history.pushState({}, '', href);        // update address bar
+    scrollToSection(href);                  // smooth scroll
+  }
+});
+
+/* 3. browser back/forward buttons */
+window.addEventListener('popstate', () => scrollToSection());
 </script>
