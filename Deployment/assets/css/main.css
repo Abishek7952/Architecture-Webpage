@@ -6029,4 +6029,26 @@ input, select, textarea {
 	.mobile-logo {
 		display: block;
 	}
+	
+	/* Ensure all elements fit within viewport */
+	* {
+		max-width: 100% !important;
+		box-sizing: border-box;
+	}
+	
+	img, video, iframe {
+		max-width: 100% !important;
+		height: auto !important;
+	}
+	
+	.container {
+		max-width: 100% !important;
+		padding-left: 1em !important;
+		padding-right: 1em !important;
+	}
+	
+	.wrapper {
+		max-width: 100% !important;
+		overflow-x: hidden;
+	}
 }
