@@ -2503,6 +2503,7 @@ input, select, textarea {
   justify-content: center;
   gap: 0.5em;
   margin-top: 1em;
+  z-index:3;
 }
 
 .dot {
@@ -2512,11 +2513,13 @@ input, select, textarea {
   background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: all 0.3s ease;
+  z-index:3;
 }
 
 .dot.active {
   background: #f66b0e;
   transform: scale(1.2);
+  z-index:3;
 }
 
 .logo-scroll-container {
@@ -5925,6 +5928,7 @@ input, select, textarea {
 }
 .slider-dots-mobile {
   display: none;
+  z-index:5;
 }
 
 @media screen and (max-width: 736px) {
@@ -5933,10 +5937,12 @@ input, select, textarea {
     justify-content: center;
     gap: 12px;
     margin-top: 2em;
+	z-index:5;
   }
   
   .slider-dots {
     display: none;
+	z-index:5;
   }
 }
 @media screen and (max-width: 736px) {
