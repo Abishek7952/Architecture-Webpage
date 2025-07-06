@@ -1195,41 +1195,45 @@ function currentMobileSlide(n) {
 
 </script>
 <script>
-/* path -> section id (no #) */
-const sectionMap = {
-  '/profile'   : 'intro',
-  '/services'  : 'services',
-  '/contactus' : 'footer'
-};
+(() => {
+  /*  clean path  →  section id (no #)  */
+  const sectionMap = {
+    '/profile'   : 'intro',
+    '/services'  : 'services',
+    '/contactus' : 'footer'
+  };
 
-/* scroll helper */
-function scrollToSection(path = location.pathname) {
-  path = path.toLowerCase().replace(/\/$/, '');        // strip trailing /
-  const id = sectionMap[path];
-  if (!id) return;
-  requestAnimationFrame(() => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  });
-}
+  /* helper: normalise /profile/ → /profile */
+  const norm = p => (p.endsWith('/') && p.length > 1) ? p.slice(0, -1) : p;
 
-/* 1. first load */
-document.addEventListener('DOMContentLoaded', () => {
-  scrollToSection();
-});
-
-/* 2. intercept internal nav clicks */
-document.body.addEventListener('click', e => {
-  const link = e.target.closest('a[data-clean-nav]');
-  if (!link) return;
-
-  const href = link.getAttribute('href');
-  if (href && href.startsWith('/')) {
-    e.preventDefault();                     // stop full page reload
-    history.pushState({}, '', href);        // update address bar
-    scrollToSection(href);                  // smooth scroll
+  /* smooth‑scroll to the section for a given path */
+  function scroll(path = location.pathname) {
+    const id = sectionMap[norm(path.toLowerCase())];
+    if (!id) return;                                  // no match → do nothing
+    requestAnimationFrame(() =>
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    );
   }
-});
 
-/* 3. browser back/forward buttons */
-window.addEventListener('popstate', () => scrollToSection());
+  /* 1️⃣ first page load */
+  document.addEventListener('DOMContentLoaded', scroll);
+
+  /* 2️⃣ intercept nav clicks EARLY (capture phase) */
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[data-clean-nav]');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (!href || !href.startsWith('/')) return;       // only same‑origin links
+
+    e.preventDefault();                               // stop full reload
+    if (norm(location.pathname) !== norm(href)) {
+      history.pushState({}, '', href);                // update address bar
+    }
+    scroll(href);                                     // smooth scroll
+  }, true);                                           //  ← capture = true
+
+  /* 3️⃣ handle back / forward buttons */
+  window.addEventListener('popstate', () => scroll());
+})();
 </script>
