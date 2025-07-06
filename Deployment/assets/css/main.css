@@ -5876,6 +5876,7 @@ input, select, textarea {
   position: relative;
   align-items: center;
   gap: 2em;
+  z-index:2;
 }
 
 .company-names-grid-mobile {
