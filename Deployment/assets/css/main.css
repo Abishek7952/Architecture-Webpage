@@ -6035,7 +6035,8 @@ input, select, textarea {
 	#intro {
 			 background-image: image-set(
     url("/images/introbg34.jpeg") 1x,
-    url("/images/introbg34-mobile.jpg") 2x
+    url("/images/introbg34@2x.jpg") 2x,
+	 url("/images/introbg34@3x.jpg") 3x
   );
             background-size: cover;
 			background-repeat: no-repeat;
