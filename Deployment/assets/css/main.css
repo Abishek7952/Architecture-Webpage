@@ -3654,11 +3654,7 @@ input, select, textarea {
   position: relative;
   color: #ffffff;
   background-color: #FF860C;
-			background-image:image-set(
-    url("../../images/introbg34.jpeg") 1x,
-    url("../../images/introbg34@2x.jpg") 2x,
-   
-  );
+			background-image:url("/images/introbg34.jpeg");
             background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
@@ -6036,4 +6032,12 @@ input, select, textarea {
 	.mobile-logo {
 		display: block;
 	}
+	#intro {
+  
+  
+			background-image:url("../../images/introbg34-mobile.jpg");
+            background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+}
 }
