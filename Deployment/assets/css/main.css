@@ -5442,6 +5442,7 @@ input, select, textarea {
 				font-size: 1.4em;
 				text-align: center;
 				padding: 0 1em;
+				margin-left:12px;
 			}
 			
 			.intro-highlights {
@@ -6035,6 +6036,10 @@ input, select, textarea {
             background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
+}
+.intro-text p{
+	font-size:small;
+	font-weight: 500;
 }
 }
 
