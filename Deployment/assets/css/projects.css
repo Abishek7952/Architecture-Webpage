@@ -900,4 +900,11 @@ font-size:x-large;
 	.mobile-logo-projects {
 		display: block;
 	}
+	*{box-sizing:border-box;}
+	html,body{
+		overflow-x:hidden;
+		margin:0;
+		padding:0;
+		width:100%;
+	}
 }
