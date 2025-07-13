@@ -701,6 +701,12 @@ font-size:x-large;
     gap: 2em;
     padding: 0 1em;
   }
+  .mobile-logo-projects img{
+	margin-top:140px;
+}
+#navPanel{
+max-height:max-content;
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -910,7 +916,7 @@ font-size:x-large;
 	.mobile-logo-projects {
 		display: block;
 	}
-	*{box-sizing:border-box;}
+	/* *{box-sizing:border-box;} */
 	html,body{
 		overflow-x:hidden;
 		margin:0;
@@ -932,5 +938,11 @@ font-size:x-large;
     gap: 2em;
     padding: 0 1em;
 
+}
+.mobile-logo-projects img{
+	margin-top:140px;
+}
+#navPanel{
+max-height:max-content;
 }
 }
